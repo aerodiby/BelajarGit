@@ -6,14 +6,12 @@ public class GameManager : MonoBehaviour
 
     public GameState currentState;
 
-    void Awake()
+    private void Awake()
     {
-        Instance = this;
-    }
-
-    void Start()
-    {
-        PlayingGame();
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     void Update()
@@ -26,31 +24,36 @@ public class GameManager : MonoBehaviour
         {
             PlayingGame();
         }
-
-        
     }
     public void PlayingGame()
     {
         Time.timeScale = 1f;
         currentState = GameState.Playing;
+
+        Debug.Log("State: Playing");
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0f;
         currentState = GameState.Paused;
+
+        Debug.Log("State: Paused");
     }
 
     public void GameOver()
     {
         Time.timeScale = 0f;
-        Debug.Log("Game Over");
         currentState = GameState.GameOver;
+
+        Debug.Log("State: Game Over");
     }
 
     public void MainMenu()
     {
         Time.timeScale = 1f;
         currentState = GameState.MainMenu;
+
+        Debug.Log("State: Main Menu");
     }
 }

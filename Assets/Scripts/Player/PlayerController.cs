@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            TakeDamage(50f);
+            TakeDamage(00.5f);
         }
     }
 
